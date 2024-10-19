@@ -13,13 +13,13 @@ function BookTable() {
   const navigate = useNavigate()
 
   const populateBook = (data) => {
-    return data.map((book, index) => (
-      <tr key={index} className='border-b hover:bg-gray-50'>
-        <td className='py-2 px-4'>{book.title}</td>
-        <td className='py-2 px-4'>{book.author}</td>
-        <td className='py-2 px-4'>{book.genre}</td>
-        <td className='py-2 px-4'>{book.year}</td>
-        <td className='py-2 px-4'>
+    return data.map((book, index) => (      
+      <tr key={index} className='border-b hover:bg-gray-100'>
+        <td className='py-2 px-4 mt-1'>{book.author}</td>
+        <td className='py-2 px-4 mt-1'>{book.title}</td>
+        <td className='py-2 px-4 mt-1'>{book.genre}</td>
+        <td className='py-2 px-4 mt-1'>{book.year}</td>
+        <td className='py-2 px-4 mt-1'>
           <button className='px-2' onClick={() => delet(index)}><FaTrash /></button>
           <button className='px-2' onClick={() => edit(index)}><FaEdit /></button>
         </td>
@@ -46,19 +46,19 @@ function BookTable() {
 
   return (
     <div>
-      <div className='w-auto bg-gray-800 top-0 p-3 h-16 flex justify-center'>
+      <div className='w-auto bg-gray-100 top-0 p-3 h-16 flex justify-center'>
         <input type="text" className='border border-black w-80 p-5 rounded-xl ' placeholder='Search ' name="" onChange={Search} />
         <a className='border border-white rounded-xl bg-blue-700 text-white text-xl p-1 px-3 ms-10' href="/AddBook">Add Book</a>
       </div>
       <div className='flex justify-center m-20' >
         <table className='min-w-full bg-white border border-gray-200'>
           <tbody>
-            <tr className='bg-gray-100 border-b'>
-              <th className='py-2 px-4 text-left text-gray-600 font-semibold'>Title</th>
-              <th className='py-2 px-4 text-left text-gray-600 font-semibold'>Author</th>
-              <th className='py-2 px-4 text-left text-gray-600 font-semibold'>Genre</th>
-              <th className='py-2 px-4 text-left text-gray-600 font-semibold'>Year</th>
-              <th className='py-2 px-4 text-left text-gray-600 font-semibold'>Action</th>
+            <tr className='bg-gray-800 text-white border-b'>
+              <th className='py-2 px-4 text-left font-semibold'>Title</th>
+              <th className='py-2 px-4 text-left font-semibold'>Author</th>
+              <th className='py-2 px-4 text-left font-semibold'>Genre</th>
+              <th className='py-2 px-4 text-left font-semibold'>Year</th>
+              <th className='py-2 px-4 text-left font-semibold'>Action</th>
             </tr>
             {populateBook(filteredBooks)}
           </tbody>
