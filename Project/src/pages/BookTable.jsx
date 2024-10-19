@@ -5,12 +5,45 @@ import { useNavigate } from 'react-router-dom'
 import { useContext } from 'react'
 import webContext from '../context/Context'
 import Navbar from '../components/Navbar'
-
+import { useEffect } from 'react'
 
 
 function BookTable() {
   const [books, setBooks] = useState(JSON.parse(localStorage.getItem('books')) || [])
   const [searchTerm, setSearchTerm] = useState("");
+
+//   useEffect(() => {
+//     const book = [
+//         {
+//             title: 'Harper Lee',
+//             author: 'To Kill a Mockingbird',
+//             genre: 'Fiction',
+//             year: 1960
+//         },
+//         {
+//             title: 'Jane Eyre',
+//             author: 'Pride and Prejudice',
+//             genre: 'Dystopian',
+//             year: 1813
+//         },
+//         {
+//             title: 'The Great Gatsby',
+//             author: 'F. Scott Fitzgerald',
+//             genre: 'Classic',
+//             year: 1925
+//         },{
+//             title: 'Herman Melville',
+//             author: 'Moby Dick',
+//             genre: 'Classic',
+//             year: 1851
+//         }
+//     ]
+
+//     setBooks(book)
+
+//     localStorage.setItem("books", JSON.stringify(books));
+
+// }, [])
 
   const navigate = useNavigate()
 
@@ -49,7 +82,7 @@ function BookTable() {
   return (
     <div>
       <Navbar />
-      <div className='w-auto bg-gray-100 top-0 p-3 h-16 flex justify-center'>
+      <div className='w-auto bg-gray-200 top-0 p-3 h-16 flex justify-center'>
         <input type="text" className='border border-black w-80 p-5 rounded-xl ' placeholder='Search by title,author or genre ' name="" onChange={Search} />
         <a className='border border-white rounded-xl bg-blue-700 text-white text-xl p-1 px-3 ms-10' href="/AddBook">Add New Book</a>
       </div>
