@@ -50,8 +50,8 @@ function BookTable() {
     <div>
       <Navbar />
       <div className='w-auto bg-gray-100 top-0 p-3 h-16 flex justify-center'>
-        <input type="text" className='border border-black w-80 p-5 rounded-xl ' placeholder='Search ' name="" onChange={Search} />
-        <a className='border border-white rounded-xl bg-blue-700 text-white text-xl p-1 px-3 ms-10' href="/AddBook">Add Book</a>
+        <input type="text" className='border border-black w-80 p-5 rounded-xl ' placeholder='Search by title,author or genre ' name="" onChange={Search} />
+        <a className='border border-white rounded-xl bg-blue-700 text-white text-xl p-1 px-3 ms-10' href="/AddBook">Add New Book</a>
       </div>
       <div className='flex justify-center m-20' >
         <table className='min-w-full bg-white border border-gray-200'>
