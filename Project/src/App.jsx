@@ -1,32 +1,23 @@
-import viteLogo from '/vite.svg'
+import { Routes, Route } from "react-router-dom";
+import Sign_In from "./pages/Sign_In";
+import Sign_up from "./pages/Sign_up";
+import AddBook from "./pages/AddBook";
+import BookTable from "./pages/BookTable";
+import ContextProvider from "./context/ContextProvider";
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
     <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+      <Routes>
+        <Route path="/" element={<Sign_In />} />
+        <Route path="/Sign_in" element={<Sign_In />} />
+        <Route path="/Sign_up" element={<Sign_up />} />
+        <Route path="/AddBook" element={<AddBook />} />
+        <Route path="/BookTable" element={<BookTable />} />
+        {/* <Route path="/DeleteBook" element={<DeleteBook />} /> */}
+      </Routes>
     </>
-  )
+  );
 }
 
-export default App
+export default App;
