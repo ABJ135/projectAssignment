@@ -12,38 +12,40 @@ function BookTable() {
   const [books, setBooks] = useState(JSON.parse(localStorage.getItem('books')) || [])
   const [searchTerm, setSearchTerm] = useState("");
 
-//   useEffect(() => {
-//     const book = [
-//         {
-//             title: 'Harper Lee',
-//             author: 'To Kill a Mockingbird',
-//             genre: 'Fiction',
-//             year: 1960
-//         },
-//         {
-//             title: 'Jane Eyre',
-//             author: 'Pride and Prejudice',
-//             genre: 'Dystopian',
-//             year: 1813
-//         },
-//         {
-//             title: 'The Great Gatsby',
-//             author: 'F. Scott Fitzgerald',
-//             genre: 'Classic',
-//             year: 1925
-//         },{
-//             title: 'Herman Melville',
-//             author: 'Moby Dick',
-//             genre: 'Classic',
-//             year: 1851
-//         }
-//     ]
+  useEffect(() => {
+    if(books.length === 0) {
+    const initialBooks = [
+        {
+            title: 'Harper Lee',
+            author: 'To Kill a Mockingbird',
+            genre: 'Fiction',
+            year: 1960
+        },
+        {
+            title: 'Jane Eyre',
+            author: 'Pride and Prejudice',
+            genre: 'Dystopian',
+            year: 1813
+        },
+        {
+            title: 'The Great Gatsby',
+            author: 'F. Scott Fitzgerald',
+            genre: 'Classic',
+            year: 1925
+        },{
+            title: 'Herman Melville',
+            author: 'Moby Dick',
+            genre: 'Classic',
+            year: 1851
+        }
+    ]
 
-//     setBooks(book)
+    setBooks(initialBooks)
 
-//     localStorage.setItem("books", JSON.stringify(books));
+    localStorage.setItem("books", JSON.stringify(initialBooks));
+  }
 
-// }, [])
+}, [books])
 
   const navigate = useNavigate()
 
