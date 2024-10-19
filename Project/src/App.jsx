@@ -13,7 +13,7 @@ function App() {
     <>
    
     {/* <ContextProvider> */}
-    <Navbar />
+   
       <Routes>
         <Route path="/" element={<Sign_In />} />
         <Route path="/Sign_in" element={<Sign_In />} />

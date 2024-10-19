@@ -1,6 +1,7 @@
 import React from 'react'
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom';
+import Navbar from '../components/Navbar';
 
 function AddBook() {
   const [book, setBook] = useState(JSON.parse(localStorage.getItem("books")) || [])
@@ -40,6 +41,7 @@ function AddBook() {
 
   return (
     <div>
+      <Navbar />
       <div className='container mx-auto p-6'>
       <h2 className="text-2xl font-bold mb-4">Book Information</h2>
 

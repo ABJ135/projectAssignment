@@ -4,6 +4,8 @@ import { FaTrash, FaEdit } from 'react-icons/fa'
 import { useNavigate } from 'react-router-dom'
 import { useContext } from 'react'
 import webContext from '../context/Context'
+import Navbar from '../components/Navbar'
+
 
 
 function BookTable() {
@@ -46,6 +48,7 @@ function BookTable() {
 
   return (
     <div>
+      <Navbar />
       <div className='w-auto bg-gray-100 top-0 p-3 h-16 flex justify-center'>
         <input type="text" className='border border-black w-80 p-5 rounded-xl ' placeholder='Search ' name="" onChange={Search} />
         <a className='border border-white rounded-xl bg-blue-700 text-white text-xl p-1 px-3 ms-10' href="/AddBook">Add Book</a>
