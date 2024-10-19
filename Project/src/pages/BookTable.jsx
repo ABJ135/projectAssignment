@@ -1,41 +1,69 @@
 import React from 'react'
 import { useState } from 'react'
+import { FaTrash, FaEdit } from 'react-icons/fa'
+import { useNavigate } from 'react-router-dom'
+import { useContext } from 'react'
+import webContext from '../context/Context'
+
 
 function BookTable() {
   const [books, setBooks] = useState(JSON.parse(localStorage.getItem('books')) || [])
-  console.log(books,"fetched books")
+  const [searchTerm, setSearchTerm] = useState("");
 
-  const populateBook = ()=> { 
-    return books.map((book, index) => (
-      <tr key={index}>
-        <td>{book.title}</td>
-        <td>{book.author}</td>
-        <td>{book.genre}</td>
-        <td>{book.year}</td>
-        <td> <button onClick={()=>delet(index)}>delete</button></td>
+  const navigate = useNavigate()
+
+  const populateBook = (data) => {
+    return data.map((book, index) => (
+      <tr key={index} className='border-b hover:bg-gray-50'>
+        <td className='py-2 px-4'>{book.title}</td>
+        <td className='py-2 px-4'>{book.author}</td>
+        <td className='py-2 px-4'>{book.genre}</td>
+        <td className='py-2 px-4'>{book.year}</td>
+        <td className='py-2 px-4'>
+          <button className='px-2' onClick={() => delet(index)}><FaTrash /></button>
+          <button className='px-2' onClick={() => edit(index)}><FaEdit /></button>
+        </td>
       </tr>
     ))
   }
-  const delet = (index)=>{
+  const delet = (index) => {
     const updatedBooks = books.filter((_, i) => i !== index); //this line from gpt
-    setBooks(updatedBooks); 
-    localStorage.setItem("books", JSON.stringify(updatedBooks)); 
+    setBooks(updatedBooks);
+    localStorage.setItem("books", JSON.stringify(updatedBooks));
   }
-  
+  const edit = (index) => {
+    navigate('/EditRow', { state: { index: index } })
+  }
+
+  const Search = (e) => {
+    navigate('/BookTable');
+    setSearchTerm(e.target.value);
+  }
+
+  const filteredBooks = books.filter(book =>
+    book.title.toLowerCase().includes(searchTerm.toLowerCase()) || book.author.toLowerCase().includes(searchTerm.toLowerCase()) || book.genre.toLowerCase().includes(searchTerm.toLowerCase())
+  );
+
   return (
     <div>
-      <table>
-        <tbody>
-          <tr>
-            <th>Title</th>
-            <th>Author</th>
-            <th>Genre</th>
-            <th>Year</th>
-          </tr>
-          {populateBook()}
-        </tbody>
-      </table>
-      <a href="/AddBook">Add</a>
+      <div className='w-auto bg-gray-800 top-0 p-3 h-16 flex justify-center'>
+        <input type="text" className='border border-black w-80 p-5 rounded-xl ' placeholder='Search ' name="" onChange={Search} />
+        <a className='border border-white rounded-xl bg-blue-700 text-white text-xl p-1 px-3 ms-10' href="/AddBook">Add Book</a>
+      </div>
+      <div className='flex justify-center m-20' >
+        <table className='min-w-full bg-white border border-gray-200'>
+          <tbody>
+            <tr className='bg-gray-100 border-b'>
+              <th className='py-2 px-4 text-left text-gray-600 font-semibold'>Title</th>
+              <th className='py-2 px-4 text-left text-gray-600 font-semibold'>Author</th>
+              <th className='py-2 px-4 text-left text-gray-600 font-semibold'>Genre</th>
+              <th className='py-2 px-4 text-left text-gray-600 font-semibold'>Year</th>
+              <th className='py-2 px-4 text-left text-gray-600 font-semibold'>Action</th>
+            </tr>
+            {populateBook(filteredBooks)}
+          </tbody>
+        </table>
+      </div>
     </div>
   )
 }

@@ -4,18 +4,21 @@ import Sign_up from "./pages/Sign_up";
 import AddBook from "./pages/AddBook";
 import BookTable from "./pages/BookTable";
 import ContextProvider from "./context/ContextProvider";
-
+import EditRow from "./components/EditRow";
 function App() {
   return (
     <>
+   
+    {/* <ContextProvider> */}
       <Routes>
         <Route path="/" element={<Sign_In />} />
         <Route path="/Sign_in" element={<Sign_In />} />
         <Route path="/Sign_up" element={<Sign_up />} />
         <Route path="/AddBook" element={<AddBook />} />
         <Route path="/BookTable" element={<BookTable />} />
-        {/* <Route path="/DeleteBook" element={<DeleteBook />} /> */}
+        <Route path="/EditRow" element={<EditRow />} />
       </Routes>
+    {/* </ContextProvider> */}
     </>
   );
 }

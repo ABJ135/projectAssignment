@@ -2,7 +2,6 @@ import React from 'react'
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom';
 
-
 function AddBook() {
   const [book, setBook] = useState(JSON.parse(localStorage.getItem("books")) || [])
   const [object, setObject] = useState({});
@@ -30,6 +29,10 @@ function AddBook() {
       // e.target.reset();
     }
   };
+  const cancel = (e)=>{
+    navigate("/BookTable");
+    e.target.reset();
+  }
 
   const handleChange = (e) => {
     setObject({ ...object, [e.target.name]: e.target.value });
@@ -37,6 +40,9 @@ function AddBook() {
 
   return (
     <div>
+      <div className='container mx-auto p-6'>
+      <h2 className="text-2xl font-bold mb-4">Book Information</h2>
+
       <form onSubmit={handleSubmit}>
         <div>
           <label htmlFor="title">Title</label>
@@ -55,7 +61,9 @@ function AddBook() {
           <input type="number" name="year" className='border border-black' value={object.year} placeholder="Year" onChange={handleChange} />
         </div>
         <button type="submit">Add Book</button>
+        <button onClick={cancel}>Cancel</button>
       </form>
+      </div>
     </div>    
   )
 }
