@@ -2,13 +2,13 @@ import React, { Children } from 'react'
 import webContext from './Context'
 import { useState } from 'react'
 
-function ContextProvider() {
+function ContextProvider({ Children }) {
   const [searchTerm, setSearchTerm] = useState("");
-  
+
   return (
     <webContext.Provider value={{
       searchTerm,
-      setSearchTerm      
+      setSearchTerm
     }}>
       {Children}
     </webContext.Provider>
